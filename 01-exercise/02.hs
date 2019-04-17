@@ -5,6 +5,7 @@
 -- Aufgabe 02:
 -- Implementieren Sie eine Funktion die bei Eingabe der Zahl i die i-te Zahl der Fibonacci Folge berechnet.
 -- z.B.: fib 3 = 2 oder fib 5 = 8
-
--- TODO: Implementieren Sie sowohl die Funktion, als auch den Funktionskopf
-
+fib :: Int -> Int
+fib 0 = 1
+fib 1 = 1
+fib n = fib(n - 1) + fib(n - 2)

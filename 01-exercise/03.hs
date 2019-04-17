@@ -7,33 +7,44 @@
 -- z.B.: prod [1, 2, 3, 4] = 1 * 2 * 3 * 4 = 24
 
 prod :: [Int] -> Int
--- TODO
+prod (x:xs) = x * prod xs
 
 -- Aufgabe 03B:
 -- Implementieren Sie eine Funktion, welche eine Liste umkehrt.
 -- z.B.: rev [1, 2, 3] = [3, 2, 1]
 
 rev :: [Int] -> [Int]
--- TODO
+rev [] = []
+rev (x:xs) = rev xs ++ [x]
 
 -- Aufgabe 03C:
 -- Implementieren Sie eine Funktion rem, so dass rem x xs die Liste ist, die aus xs hervorgeht, indem alle Vorkommen von x gelöscht werden.
 -- z.B. rem 2 [1, 2, 3, 2] = [1, 3]
 
-rem :: [Int] -> [Int]
--- TODO
+rem' :: Int -> [Int] -> [Int]
+rem' _ [] = []
+rem' n (x:xs)
+    | n == x = rem' n xs
+    | otherwise = x : rem' n xs
 
 -- Aufgabe 03D:
 -- Implementieren Sie eine Funktion, welche für eine Liste prüft, ob sie aufsteigend sortiert ist.
 -- z.B.: isOrd [1, 2, 3] = True oder isOrd [1, 3, 2] = False
 
 isOrd :: [Int] -> Bool
--- TODO
+isOrd [] = True
+isOrd [x] = True
+isOrd (x:y:ys)
+    | x <= y = isOrd (y:ys)
+    | otherwise = False
 
 -- Aufgabe 03E:
 -- Implementieren Sie eine Funktion, welche zwei aufsteigend sortierte Listen zu einer aufsteigend sortierten Liste vereinigt.
 -- z.B.: merge [1, 3, 5] [2, 4, 6] = [1, 2, 3, 4, 5, 6]
 
-merge [Int] -> [Int] -> [Int]
--- TODO
-
+merge :: [Int] -> [Int] -> [Int]
+merge [] ys = ys
+merge xs [] = xs
+merge (x:xs) (y:ys)
+    | x <= y = [x] ++ merge xs (y:ys)
+    | otherwise = [y] ++ merge (x:xs) ys
