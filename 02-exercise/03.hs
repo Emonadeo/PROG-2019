@@ -20,3 +20,8 @@ level :: Int -> Tree -> [String]
 level 0 (Node s _) = [s]
 level n (Node _ []) = []
 level n (Node s (t:ts)) = level (n-1) t ++ level n (Node s ts)
+
+-- alternativ
+level' :: Int -> Tree -> [String]
+level' 0 (Node s _) = [s]
+level' n (Node _ ts) = concatMap (level' (n-1)) ts
